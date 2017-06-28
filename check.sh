@@ -6,8 +6,8 @@ query="$2"
 url="${base_url}${query}"
 echo $url
 
-for i in $(seq 10); do
+for i in $(seq 100); do
     curl -kL $url -o /dev/null -w "%{time_total}" 2>/dev/null
     echo
-    sleep 0.5
+    sleep 1
 done | awk '{s += $1} END {print s/NR}'
